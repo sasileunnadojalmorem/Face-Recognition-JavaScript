@@ -25,18 +25,39 @@ async function start() {
     const displaySize = { width: image.width, height: image.height }
     faceapi.matchDimensions(canvas, displaySize)
     const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors()
+    
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
+    const results = resizedDetections.map(d => {
+      const match = faceMatcher.findBestMatch(d.descriptor)
+      const landmarks = d.landmarks.getMouth()
+      const mouthStatus = getMouthStatus(landmarks)
+      return { label: match.toString(), similarity: match.distance, mouthStatus: mouthStatus }
+    })
     results.forEach((result, i) => {
       const box = resizedDetections[i].detection.box
-      const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
+      const drawBox = new faceapi.draw.DrawBox(box, { label: `${result.label} - Similarity: ${result.similarity.toFixed(2)}` })
       drawBox.draw(canvas)
+      const text = new faceapi.draw.DrawTextField(
+        [
+          `${result.mouthStatus.toFixed(2)} - Mouth movement`
+        ],
+        { x: box.x, y: box.y + box.height + 10 }
+      )
+      text.draw(canvas)
     })
   })
 }
 
+function getMouthStatus(landmarks) {
+  // Calculate mouth openness
+  const mouthWidth = landmarks[6].x - landmarks[0].x
+  const mouthHeight = (landmarks[14].y + landmarks[15].y) / 2 - (landmarks[2].y + landmarks[3].y) / 2
+  const mouthOpenness = mouthHeight / mouthWidth
+  return mouthOpenness
+}
+
 function loadLabeledImages() {
-  const labels = [ 'kim jae hyung','kin kyeng o','shin jaemin','jun jaemin']
+  const labels = ['kim jae hyung', 'kin kyeng o', 'shin jaemin', 'jun jaemin']
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
