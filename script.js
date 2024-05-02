@@ -36,7 +36,7 @@ async function start() {
 }
 
 function loadLabeledImages() {
-  const labels = [ 'kim jae hyung','kin kyeng o','shin jaemin']
+  const labels = [ 'kim jae hyung','kin kyeng o','shin jaemin','jun jaemin']
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
