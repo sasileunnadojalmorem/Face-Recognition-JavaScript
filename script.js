@@ -36,12 +36,12 @@ async function start() {
 }
 
 function loadLabeledImages() {
-  const labels = ['Black Widow', 'kim jae hyung','kin kyeng o','shin jaemin']
+  const labels = [ 'kim jae hyung','kin kyeng o','shin jaemin']
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
       for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`https://raw.githubusercontent.com/sasileunnadojalmorem/Face-Recognition-JavaScript/master/labeled_images/${label}/${i}.JPEG`)
+        const img = await faceapi.fetchImage(`https://raw.githubusercontent.com/sasileunnadojalmorem/Face-Recognition-JavaScript/master/labeled_images/${label}/${i}.jpg`)
         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
         descriptions.push(detections.descriptor)
       }
