@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Face Recognition</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 36px; /* 폰트 크기 키우기 */
+      background-image: url('https://source.unsplash.com/featured/?cute'); /* 귀여운 이미지 배경화면 */
+      background-size: cover; /* 배경화면을 창에 맞게 조절 */
+      background-position: center; /* 배경화면을 가운데 정렬 */
+      color: white; /* 글씨 색상을 흰색으로 설정 */
+      text-align: center; /* 글씨를 가운데 정렬 */
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 24px; /* 결과 텍스트 폰트 크기 키우기 */
+    }
+
+    button {
+      font-size: 28px; /* 버튼 폰트 크기 키우기 */
+      padding: 15px 30px; /* 버튼 내부 여백 키우기 */
+      margin-top: 20px; /* 버튼과 다음 요소 간격 키우기 */
+    }
+
+    .overlay {
+      font-size: 72px; /* 아주 큰 텍스트 폰트 크기 */
+      margin-bottom: 20px; /* 버튼과의 간격 조절 */
+    }
+  </style>
+</head>
+<body>
+  <!-- 이미지 업로드를 위한 input 요소 -->
+  <script defer src="face-api.min.js"></script>
+  <script defer src="script.js"></script>
+  <!-- 동영상 업로드 및 처리 스크립트 --> 
+  <form action="/uploadVideo" method="post" enctype="multipart/form-data">
+    <div class="overlay">그래픽스 과제</div> <!-- 아주 큰 텍스트 -->
+    <label for="videoFile">Select video file:</label>
+    <input type="file" id="videoFile" name="videoFile" accept="video/*">
+    <button type="submit" id = "hidden">Upload</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    const form = document.querySelector('form');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch('/uploadVideo', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message) {
+          resultDiv.textContent = data.message;
+        } else {
+          resultDiv.textContent = 'An error occurred.';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        resultDiv.textContent = 'An error occurred.';
+      });
+    });
+  </script>
+  <script defer src="import.js"></script>
+</body>
+</html>
