@@ -11,6 +11,7 @@
 ---------------------
 ## 어플리케이션 소개 
 http://main.projectgraphic.net./
+https://www.youtube.com/watch?
 해당 어플리케이션은 기존 자막프로그램에서는 말해주지 않던 누가 
 말했는지를 알려줬으면 좋겠다 에서 착안하여 만든 기능입니다.    
 먼저 프론트엔드에서 face-api를 호출하여 미리 
@@ -63,6 +64,7 @@ http://main.projectgraphic.net./
 * * *
 face -api를 통해 동영상에서 입의 움직임을 파악하고  face api 뿐만아니라 다른 api를 활용한 웹 어플리케이션을 만들어보고 싶었습니다.
 api를 찾던중에 저는 speech to text라는 구글 클라우드 기반의 api를 발견하게 되었고 이를 활용한 어플리케이션을 만들었습니다. 밑의 유튜브 주소는 제가 만든 어플리케이션의 로컬호스트 기반 웹을 소개하는 영상입니다. https://www.youtube.com/watch?v=3kakNQx9Kp8&ab_channel=%EC%A0%84%EC%9E%AC%EB%AF%BCjasmin 
+다음주소는 웹서버 기반의 사이트 주소입니다 http://main.projectgraphic.net./ 해당 어플리케이션을 제작하며 정말 힘들었지만 이런과정이 너무재밌어서 이런 프로젝트를 할수있도록 기회를준 심재창 교수님께 감사합니다
 * * *
 
-다음주소는 웹서버 기반의 사이트 주소입니다 http://main.projectgraphic.net./ 해당 어플리케이션을 제작하며 정말 힘들었지만 이런과정이 너무재밌어서 이런 프로젝트를 할수있도록 기회를준 심재창 교수님께 감사합니다
+
