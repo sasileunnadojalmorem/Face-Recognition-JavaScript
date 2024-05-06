@@ -5,15 +5,23 @@ const path = require('path');
 const { SpeechClient } = require('@google-cloud/speech');
 const multer = require('multer');
 const fs = require('fs');
-const ffmpeg = require('fluent-ffmpeg');
+
 const bodyParser = require('body-parser');
+
+const ffmpegInstaller = require('@ffmpeg-installer/ffmpeg');
+const ffmpeg = require('fluent-ffmpeg');
+
+ffmpeg.setFfmpegPath(ffmpegInstaller.path);
+// console.log(ffmpegInstaller.path, ffmpegInstaller.version);
+
+module.exports = ffmpeg;	
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 // Google Cloud Speech-to-Text 클라이언트 생성
-const keyFile = 'C:\\Users\\ddd\\3D Objects\\key.json';
+const keyFile = '/home/deao3558/key.json';
 const client = new SpeechClient({ keyFilename: keyFile });
 
 // multer 설정
