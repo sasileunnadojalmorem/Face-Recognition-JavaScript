@@ -10,8 +10,8 @@
 
 ---------------------
 ## 어플리케이션 소개 
-http://main.projectgraphic.net./
-https://www.youtube.com/watch?
+http://main.projectgraphic.net./   
+https://www.youtube.com/watch?    
 해당 어플리케이션은 기존 자막프로그램에서는 말해주지 않던 누가 
 말했는지를 알려줬으면 좋겠다 에서 착안하여 만든 기능입니다.    
 먼저 프론트엔드에서 face-api를 호출하여 미리 
