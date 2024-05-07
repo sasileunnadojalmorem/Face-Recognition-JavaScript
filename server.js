@@ -1,3 +1,4 @@
+
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
@@ -147,7 +148,7 @@ async function recognizeSpeech(voiceFilePath) {
       
       const matchedLabels = findMatchingLabels(videodata, voicedata1);
       console.log(matchedLabels);
-      
+      sendToClient(matchedLabels);
     }
     return transcription;
 
@@ -227,7 +228,23 @@ function findMatchingLabels(data, transcription) {
       }
     }
   });
-
+ 
   // 결과 배열 반환
   return resultArray;
+}
+function sendToClient(data) {
+  // 연결된 클라이언트가 없으면 함수를 종료합니다.
+  if (wss.clients.size === 0) {
+    console.log('No clients connected.');
+    return;
+  }
+
+  // 데이터를 JSON 형식으로 변환하여 클라이언트로 전송합니다.
+  const jsonData = JSON.stringify(data);
+  wss.clients.forEach(client => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(jsonData);
+      console.log('Data sent to client:', data);
+    }
+  });
 }
