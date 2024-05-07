@@ -10,7 +10,7 @@
 
 ---------------------
 ## 어플리케이션 소개 
-http://main.projectgraphic.net./   
+http://main.projectgraphic.net./   <- 서버가 닫혀있습니다. 열람하고싶으시면 제게 말해주세요
 [[https://www.youtube.com/watch?    ](https://www.youtube.com/watch?v=3kakNQx9Kp8&ab_channel=%EC%A0%84%EC%9E%AC%EB%AF%BCjasmin )  ](https://www.youtube.com/watch?v=3kakNQx9Kp8&ab_channel=%EC%A0%84%EC%9E%AC%EB%AF%BCjasmin )      
 해당 어플리케이션은 기존 자막프로그램에서는 말해주지 않던 누가 
 말했는지를 알려줬으면 좋겠다 에서 착안하여 만든 기능입니다.    
