@@ -20,7 +20,7 @@
 프로젝트 메인 도메인입니다.   
 업로드하는 영상에는 학습한 인원의 얼굴만 있어야 합니다.   
 다음은 해당 영상이 없을시에 사용할수있는 샘플영상입니다
-주소는 https://drive.google.com/file/d/1oDV28JTlgDyupPWqh5YwxuYo-VKs-UFI/view?usp=sharing 
+주소는(https://drive.google.com/drive/folders/0B2pOLAp6dERzflJkVmdudlNYUUdac1NOM0pyTjQzYmEwMkUtSFU3V19tM2M2T2prVFFkVmc?resourcekey=0-I1-wOQgW5qY7m1rRDRIiJg&usp=drive_link)
 (https://www.youtube.com/watch?v=3kakNQx9Kp8&ab_channel=%EC%A0%84%EC%9E%AC%EB%AF%BCjasmin ) 프로젝트 시연 영상입니다.
 -------
 ## 웹 어플리케이션 작동방법입니다.
